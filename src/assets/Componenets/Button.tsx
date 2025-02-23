@@ -1,14 +1,18 @@
-import { useState } from 'react'
+// Button.tsx
 
-import './App.css'
-function Button() {
-  const [count, setCount] = useState(0)
+import React from 'react';
 
+type ButtonProps = {
+  onClick: () => void;
+  label: string;
+};
+
+const Button: React.FC<ButtonProps> = ({ onClick, label }) => {
   return (
-    <>
-      <button className='px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none'></button>
-    </>
-  )
-}
+    <button onClick={onClick} className="action-button">
+      {label}
+    </button>
+  );
+};
 
-export default Button
+export default Button;
