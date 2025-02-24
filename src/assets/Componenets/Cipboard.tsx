@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import Card from './Card';
-import './App.css';
-import { v4 as uuidv4 } from 'uuid';
 
-const uniqueId = uuidv4();
-console.log(uniqueId);  
+import { v4 as uuidv4 } from 'uuid';
+ 
 
 type CopiedData = {
   type: 'text' | 'image';

@@ -1,10 +1,10 @@
-import { useState } from 'react';
+
 import Button from './Button';
 
 type CopiedData={
     type?:string;
     content?:string;
-    id?:string;
+    id:string;
 }
 
 type CardProps={
@@ -14,6 +14,14 @@ type CardProps={
 };
 
 const Card:React.FC<CardProps>=({data,onDelete})=>{
+    const handleDelete=()=>{
+        if(data.id){
+            onDelete(data.id);
+        }
+        else{
+            console.error("Id is undefined");
+        }
+    };
     
     return(
         <div>
@@ -21,7 +29,7 @@ const Card:React.FC<CardProps>=({data,onDelete})=>{
             {data.type=='image'&& <img src={data.content} />}
             <div>
                 
-                <Button onClick={()=>onDelete(data.id)} label="Delete"/>
+                <Button onClick={handleDelete} label="Delete"/>
             </div>
         </div>
     )
