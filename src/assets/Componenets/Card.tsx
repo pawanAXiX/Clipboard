@@ -4,13 +4,12 @@ import Button from './Button';
 type CopiedData={
     type?:string;
     content?:string;
-    id:string;
+    id:number;
 }
 
 type CardProps={
     data:CopiedData;
-    onDelete:(id:string)=>void;
-    id:string
+    onDelete:(id:number)=>void;
 };
 
 const Card:React.FC<CardProps>=({data,onDelete})=>{
