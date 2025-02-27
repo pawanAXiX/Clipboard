@@ -1,16 +1,29 @@
-// Button.tsx
 
 import React from 'react';
 
-type ButtonProps = {
-  onClick: () => void;
+interface ButtonProps {
   label: string;
-};
+  onClick: () => void;
+  variant?: 'primary' | 'secondary' | 'danger';
+  size?: 'small' | 'medium' | 'large';
+  disabled?: boolean;
+}
 
-const Button: React.FC<ButtonProps> = ({ onClick, label }) => {
- 
+const Button: React.FC<ButtonProps> = ({ 
+  label, 
+  onClick, 
+  variant = 'primary', 
+  size = 'medium',
+  disabled = false
+}) => {
+  const className = `button ${variant} ${size}`;
+  
   return (
-    <button onClick={onClick} className="action-button">
+    <button 
+      className={className}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {label}
     </button>
   );

@@ -3,8 +3,11 @@
     "name": "Clipboard",
     "version": "1.0",
     "permissions": [
-      "activeTab","storage","clipboardRead","clipboardWrite"
-    ],
+  "activeTab",
+  "storage",
+  "clipboardRead",
+  "clipboardWrite"
+],
     "background":{
       "service_worker":"js/background.js"
     },

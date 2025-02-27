@@ -1,37 +1,39 @@
 
+import React from 'react';
 import Button from './Button';
 
-type CopiedData={
-    type?:string;
-    content?:string;
-    id:number;
+
+interface CardProps {
+  item: ClipboardItem;
+  onCopy: () => void;
+  onDelete: () => void;
 }
 
-type CardProps={
-    data:CopiedData;
-    onDelete:(id:number)=>void;
+type ClipboardItem={
+  type:"text"|"image"|string;
+  content:string;
+  id:string;
+}
+
+const Card: React.FC<CardProps> = ({ item, onCopy, onDelete }) => {
+
+  return (
+    <div className="card">
+      <div className="content">
+        {item.type === 'text' ? (
+          <div className="text-content">{item.content}</div>
+        ) : (
+          <div className="image-container">
+            <img src={item.content} alt="Copied content" />
+          </div>
+        )}
+      </div>
+      <div className="actions">
+        <Button label="Copy" onClick={onCopy} variant="primary" />
+        <Button label="Delete" onClick={onDelete} variant="danger" />
+      </div>
+    </div>
+  );
 };
 
-const Card:React.FC<CardProps>=({data,onDelete})=>{
-    const handleDelete=()=>{
-        if(data.id){
-            onDelete(data.id);
-        }
-        else{
-            console.error("Id is undefined");
-        }
-    };
-    
-    return(
-        <div>
-            {data.type=='text' &&<p>{data.content}</p>}
-            {data.type=='image'&& <img src={data.content} />}
-            <div>
-                
-                <Button onClick={handleDelete} label="Delete"/>
-            </div>
-        </div>
-    )
-}
-
-export default Card;    
+export default Card;
